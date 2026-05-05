@@ -13,7 +13,7 @@ Every material finding, claim, or assertion must follow these rules:
 |---|---|---|
 | `Confirmed` | Directly evidenced by file content, config, log, or code path you have read | Cite the exact file path |
 | `Inferred` | Best-fit interpretation based on indirect or circumstantial evidence | Label explicitly; include the basis for the inference |
-| `Not found` | Evidence is absent from scanned files | Use this phrase verbatim — never guess in its place |
+| `Not found in scanned files` | Evidence is absent from scanned files | Use this phrase verbatim — never guess in its place |
 
 - Every material claim must cite at least one concrete file path, line number, or artifact.
 - Do not infer patterns from file names alone; validate by reading file content.
@@ -25,7 +25,7 @@ Every material finding, claim, or assertion must follow these rules:
 
 - **Always overwrite output files completely** — never append to an existing file.
 - If the file already exists, replace its entire contents in a single write operation.
-- After writing, confirm the write succeeded at the exact expected path before proceeding.
+- After writing, confirm the write succeeded by reading the file back at its exact expected path and running every item in the File Creation Validation Checklist from the skill's STANDARDS.md before proceeding.
 - Do not return artifact content in chat as a substitute for writing the file to disk.
 - Log the output path explicitly when the write is complete.
 
@@ -88,9 +88,26 @@ Example:
 
 ---
 
+## 9. Placeholder Convention
+
+Templates in this system use a two-tier placeholder syntax. Both tiers must be fully resolved before an agent is considered ready to use.
+
+| Format | Tier | When to fill | Filled by | Example |
+|---|---|---|---|---|
+| `{{UPPER_SNAKE_CASE}}` | Design-time | When instantiating a template into a new agent definition | Agent author | `{{AGENT_NAME}}` → `cognia-arch` |
+| `{lower_case}` | Runtime | At invocation time, provided by the caller as an argument | Caller | `{project_name}` → `my-app` |
+
+- Every `{{UPPER_SNAKE_CASE}}` placeholder must be replaced before an agent is activated.
+- Every `{lower_case}` placeholder must be replaced at runtime — none may appear in agent-produced output artifacts.
+- A document containing unreplaced placeholders of either tier is invalid output.
+
+---
+
 ## 8. Security & Safety Rules
 
 - Do not write credentials, secrets, API keys, or PII to any output file.
 - If a scanned file contains credentials or PII, note their presence but do not reproduce the values.
-- Do not execute, compile, or deploy code as part of analysis — read only.
+- Default mode is read-only analysis.
+- Execution (run/compile/test) is allowed only when the agent definition explicitly permits it and required approval gates are satisfied.
+- Do not deploy code as part of analysis unless deployment is explicitly in-scope for that agent and approval-gated.
 - Do not follow symlinks outside the designated project root during file scanning.

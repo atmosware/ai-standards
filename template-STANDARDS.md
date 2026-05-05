@@ -45,7 +45,7 @@ After generating each output file, verify every item before marking the step com
 10. **{{SKILL_SPECIFIC_CHECK_2}}** — {{What to verify and how.}}
 11. **{{SKILL_SPECIFIC_CHECK_3}}** — {{What to verify and how.}}
 
-If any check fails, **overwrite the entire file** with corrected content — never patch individual lines.
+If any check fails, correct the file using targeted edits or full regeneration, then rerun all checklist items. The file is valid only when every check passes.
 
 ---
 

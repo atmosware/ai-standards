@@ -88,7 +88,7 @@ Key checks specific to this skill's output:
 - {{Check 3 specific to this skill — e.g., "Every table has at least one data row."}}
 - {{Check 4 specific to this skill.}}
 
-If any check fails, **regenerate the entire file from scratch** using the STANDARDS.md template. Do not patch individual lines — a partial fix produces a partially broken file.
+If any check fails, fix the file using the safest approach (targeted edits or full regeneration), then rerun the complete checklist. The step is complete only when all checks pass.
 
 ### Step 5 — Identify Weaknesses / Issues
 Document at least **{{MIN_FINDING_COUNT}}** findings. More is better; fewer is a gap.
@@ -110,43 +110,7 @@ Identify the top **{{N}}** items with the highest combined Impact + Remediation 
 
 ## Output Format
 
-### {project_name}-{{ARTIFACT_SLUG}}.md
-
-```markdown
-# {{System Name}} — {{Report Title}}
-
-## 1. {{Section 1 Name}}
-[{{Description of what goes in this section.}}]
-
-## 2. {{Section 2 Name}}
-### 2.1 {{Subsection Name}}
-| {{Col A}} | {{Col B}} | {{Col C}} | {{Col D}} |
-|---|---|---|---|
-
-### 2.2 {{Subsection Name}}
-[{{Description.}}]
-
-## 3. {{Section 3 Name}}
-### 3.1 {{Subsection Name}}
-### 3.2 {{Subsection Name}}
-### 3.3 {{Subsection Name}}
-
-## 4. {{Section 4 Name}}
-[{{Description — cross-cutting concerns, shared patterns, etc.}}]
-
-## 5. {{Section 5 Name}}
-| # | Finding | Evidence | Impact | Remediation Effort |
-|---|---|---|---|---|
-
-## 6. {{Section 6 Name}}
-[{{Description — hotspot map, coupling analysis, etc.}}]
-
-## 7. {{Section 7 Name}}
-[{{Description — constraints, recommendations for next steps, handoff notes.}}]
-```
-
-### {project_name}-{{ARTIFACT_SLUG}}.html
-Full {{FORMAT}} file following the base template in [STANDARDS.md](./STANDARDS.md), with all sections from Step 4 populated with actual system content.
+Output templates, syntax rules, and the File Creation Validation Checklist are defined in [STANDARDS.md](./STANDARDS.md). STANDARDS.md is the single authoritative source for output structure — do not duplicate templates here.
 
 ---
 

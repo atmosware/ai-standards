@@ -2,6 +2,8 @@
 name: {{AGENT_NAME}}
 description: '{{ONE_LINE_DESCRIPTION_USED_FOR_AGENT_SELECTION_MAX_120_CHARS}}'
 argument-hint: '{{WHAT_TO_PASS_AS_ARGUMENT_WHEN_INVOKING_THIS_AGENT}}'
+safety-tier: '{{1 | 2 | 3}}'
+approval-gate: '{{none | pre-execute | pre-commit}}'
 ---
 
 # {{Agent Display Name}}
@@ -32,6 +34,27 @@ This agent executes by strictly following every step defined in:
 - **{{Responsibility 3}}**: {{What it means and what the agent produces. One sentence.}}
 - **{{Responsibility 4}}**: {{What it means and what the agent produces. One sentence.}}
 - **{{Responsibility 5}}**: {{What it means and what the agent produces. One sentence.}}
+
+## Safety Classification
+
+**Safety Tier**: `{{1 | 2 | 3}}`
+**Approval Gate**: `{{none | pre-execute | pre-commit}}`
+
+| Tier | Permitted actions |
+|---|---|
+| `1` | Read and search files only — no writes, no execution |
+| `2` | Write to designated output files only — no code execution |
+| `3` | May execute code or modify source files — requires `pre-execute` or `pre-commit` gate |
+
+| Gate | When it fires |
+|---|---|
+| `none` | Agent runs to completion without pausing |
+| `pre-execute` | Agent pauses and awaits approval before any write or execution step |
+| `pre-commit` | Agent pauses and awaits approval before committing changes to version control |
+
+Tier 3 agents **must** declare `pre-execute` or `pre-commit`. Tier 1 and Tier 2 agents may declare `none`.
+
+---
 
 ## Constraints
 

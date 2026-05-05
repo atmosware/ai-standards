@@ -25,8 +25,8 @@
 core-standards.md          (Tier 1 — universal, never contradicted)
   └── STANDARDS.md         (Tier 2 — skill-local, extends Tier 1)
         └── SKILL.md       (Tier 3 — execution procedure, governed by Tier 2)
-              └── Agent    (invokes Tier 3, constrained by its role definition)
-                    └── INSTRUCTIONS.md  (orchestration layer — this file)
+              └── Agent    (Tier 4 — role/scope definition, invokes Tier 3)
+                    └── INSTRUCTIONS.md  (Tier 5 — orchestration metadata, this file)
 ```
 
 A lower tier may add specificity but must never contradict a higher tier. If conflict exists, the higher tier wins.
@@ -97,7 +97,10 @@ Follow these steps in order. Do not activate an agent until all five steps are c
 | Skill directory | Match agent name exactly | `skills/cognia-arch/` |
 | Output folder | Short, lowercase noun | `cognia/` |
 | Output files | `{project_name}-{{capability}}.md` / `.html` | `myapp-architecture.md` |
-| Placeholder variables | `{{UPPER_SNAKE_CASE}}` double-brace | `{{AGENT_NAME}}` |
+| Design-time placeholder | `{{UPPER_SNAKE_CASE}}` double-brace — fill when instantiating the template | `{{AGENT_NAME}}` |
+| Runtime variable | `{lower_case}` single-brace — filled by the caller at invocation | `{project_name}` |
+
+Both placeholder tiers must be fully resolved before an agent is considered ready. See `core-standards.md §9` for the full convention.
 
 ---
 
