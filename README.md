@@ -36,7 +36,11 @@ Agent development was inconsistent across projects — different structure, diff
 | File | Purpose |
 |---|---|
 | `core-standards.md` | **Tier 1** — Universal rules every agent inherits without exception |
-| `template-AGENT.md` | Template for agent definition files (`.github/agents/*.md`) |
+| `template-AGENT.md` | Base template for agent definition files (`.github/agents/*.md`) |
+| `template-AGENT-backend.md` | Pre-filled agent template for backend teams (endpoints, services, DB, auth, integrations) |
+| `template-AGENT-frontend.md` | Pre-filled agent template for frontend teams (pages, components, state, API, bundle) |
+| `template-AGENT-ios.md` | Pre-filled agent template for iOS teams (screens, navigation, networking, Swift/ObjC, App Store) |
+| `template-AGENT-android.md` | Pre-filled agent template for Android teams (screens, navigation, networking, Kotlin/Java, Play Store) |
 | `template-SKILL.md` | Template for step-by-step execution procedures (`SKILL.md`) |
 | `template-STANDARDS.md` | Template for output templates and validation checklists (`STANDARDS.md`) |
 | `template-INSTRUCTIONS.md` | Template for system-level orchestration documents (`INSTRUCTIONS.md`) |
