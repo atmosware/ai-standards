@@ -1,5 +1,5 @@
 ---
-name: {PREFIX}-backend
+name: {AGENT_NAME}
 description: 'Deep-dive backend analysis: endpoints, services, DB schema, auth model, integrations, background jobs, and API contracts.'
 argument-hint: 'Describe the backend project or a specific service/module to analyse in depth.'
 ---

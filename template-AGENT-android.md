@@ -1,5 +1,5 @@
 ---
-name: {PREFIX}-android
+name: {AGENT_NAME}
 description: 'Deep-dive Android analysis: screens, fragments, navigation, networking, state, Kotlin/Java patterns, and Play Store readiness.'
 argument-hint: 'Describe the Android project or a specific module/feature to analyse in depth.'
 ---

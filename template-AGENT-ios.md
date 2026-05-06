@@ -1,5 +1,5 @@
 ---
-name: {PREFIX}-ios
+name: {AGENT_NAME}
 description: 'Deep-dive iOS analysis: screens, components, navigation, networking, state, Swift/ObjC patterns, and App Store readiness.'
 argument-hint: 'Describe the iOS project or a specific module/feature to analyse in depth.'
 ---

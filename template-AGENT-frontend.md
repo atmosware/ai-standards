@@ -1,5 +1,5 @@
 ---
-name: {PREFIX}-frontend
+name: {AGENT_NAME}
 description: 'Deep-dive frontend analysis: pages, components, state, API integrations, styling, performance, and bundle configuration.'
 argument-hint: 'Describe the frontend project or a specific feature/module to analyse in depth.'
 ---
