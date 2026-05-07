@@ -1,5 +1,5 @@
 ---
-name: {AGENT_NAME}
+name: {{AGENT_NAME}}
 description: 'Deep-dive backend analysis: endpoints, services, DB schema, auth model, integrations, background jobs, and API contracts.'
 argument-hint: 'Describe the backend project or a specific service/module to analyse in depth.'
 ---
@@ -19,7 +19,7 @@ argument-hint: 'Describe the backend project or a specific service/module to ana
 ## Skill Reference
 This agent executes by strictly following every step defined in:
 
-> [`{PREFIX}-backend` skill](../skills/{PREFIX}-backend/SKILL.md) and [`STANDARDS`](../skills/{PREFIX}-backend/STANDARDS.md)
+> [`{{PREFIX}}-backend` skill](../skills/{{PREFIX}}-backend/SKILL.md) and [`STANDARDS`](../skills/{{PREFIX}}-backend/STANDARDS.md)
 
 **Do NOT skip, reorder, or summarise steps.** All steps, output format requirements, validation checklists, and file locations are authoritative and must be completed in full.
 
@@ -56,8 +56,8 @@ The following versions are the **minimum accepted baselines** for all projects u
 
 ## Constraints
 
-- DO NOT produce frontend, mobile, or infrastructure-as-code deliverables — those belong to `{PREFIX}-frontend`, `{PREFIX}-ios`, `{PREFIX}-android`, or `{PREFIX}-arch`.
-- DO NOT propose refactors or architecture changes — that is `{PREFIX}-arch`'s domain.
+- DO NOT produce frontend, mobile, or infrastructure-as-code deliverables — those belong to `{{PREFIX}}-frontend`, `{{PREFIX}}-ios`, `{{PREFIX}}-android`, or `{{PREFIX}}-arch`.
+- DO NOT propose refactors or architecture changes — that is `{{PREFIX}}-arch`'s domain.
 - DO NOT execute migrations, run seeds, or modify the database.
 - Read and search files for analysis; only write or replace the designated output files listed below.
 - Never write credentials, secrets, API keys, connection strings, or PII to any output file.
@@ -71,7 +71,7 @@ The following versions are the **minimum accepted baselines** for all projects u
 
 ## Approach
 
-Follow the **6-step procedure** defined in `.github/skills/{PREFIX}-backend/SKILL.md`:
+Follow the **6-step procedure** defined in `.github/skills/{{PREFIX}}-backend/SKILL.md`:
 
 1. **Scope & Stack Detection** — Identify language, framework, package manager, and major dependencies from manifests and config files.
 2. **Endpoint Inventory** — Enumerate all route registrations; map each to its controller/handler, HTTP method, auth middleware, and request/response types.
@@ -96,7 +96,7 @@ Create folder `backend-audit/` and write both artifacts (always overwrite, never
 
 ## Output Format
 
-The output format for both files is fully defined in `.github/skills/{PREFIX}-backend/SKILL.md` under the **Output Format** section:
+The output format for both files is fully defined in `.github/skills/{{PREFIX}}-backend/SKILL.md` under the **Output Format** section:
 
 - **`{project_name}-backend.md`** — Sections: Executive Summary · Tech Stack · Endpoint Inventory · Service Catalogue · Data Layer · Auth & Authorisation Model · Integration & Event Map · Risk Matrix · Handoff Notes.
 - **`{project_name}-backend.html`** — Same sections rendered as a responsive, dark-themed HTML report with a sticky navigation sidebar, sortable endpoint table, and Mermaid dependency graph.

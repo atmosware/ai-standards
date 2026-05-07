@@ -41,6 +41,7 @@ Agent development was inconsistent across projects — different structure, diff
 | `template-AGENT-frontend.md` | Pre-filled agent template for frontend teams (pages, components, state, API, bundle) |
 | `template-AGENT-ios.md` | Pre-filled agent template for iOS teams (screens, navigation, networking, Swift/ObjC, App Store) |
 | `template-AGENT-android.md` | Pre-filled agent template for Android teams (screens, navigation, networking, Kotlin/Java, Play Store) |
+| `template-AGENT-action.md` | Template for action agents with Phase 1 Propose / Phase 2 Execute human-approval gate (praxia-style) |
 | `template-SKILL.md` | Template for step-by-step execution procedures (`SKILL.md`) |
 | `template-STANDARDS.md` | Template for output templates and validation checklists (`STANDARDS.md`) |
 | `template-INSTRUCTIONS.md` | Template for system-level orchestration documents (`INSTRUCTIONS.md`) |
@@ -124,7 +125,7 @@ core-standards.md          (Tier 1 — universal, never contradicted)
 
 Do not activate an agent until all five steps are complete.
 
-1. **Copy `template-AGENT.md`** → `.github/agents/{{AGENT_NAME}}.md` and fill every `{{PLACEHOLDER}}`.
+1. **Copy `template-AGENT.md`** → `.github/agents/{{AGENT_NAME}}.agent.md` and fill every `{{PLACEHOLDER}}`.
 2. **Create `.github/skills/{{AGENT_NAME}}/SKILL.md`** from `template-SKILL.md` — fill every `{{PLACEHOLDER}}`.
 3. **Create `.github/skills/{{AGENT_NAME}}/STANDARDS.md`** from `template-STANDARDS.md` — fill every `{{PLACEHOLDER}}`.
 4. **Add the agent row** to the INSTRUCTIONS.md table under "Agents in This System".
@@ -161,13 +162,13 @@ Each project that adopts these standards should maintain this layout:
 ```
 .github/
   agents/              # Canonical agent definitions (filled templates)
-    {agent-name}.md
+    {agent-name}.agent.md
   skills/
     {agent-name}/
       SKILL.md         # Step-by-step procedure
       STANDARDS.md     # Output templates and validation checklists
   standards/
-    core-standards.md  # Copied from this repo (Tier 1)
+    core.md            # Copied from this repo (Tier 1)
   instructions/
     INSTRUCTIONS.md    # System orchestration document
 .claude/
