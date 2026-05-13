@@ -14,10 +14,10 @@
 
 | Document type | Purpose | Location |
 |---|---|---|
-| **Agent** | Defines role, scope, constraints, and output for one agent | `.github/agents/{{AGENT_NAME}}.md` |
+| **Agent** | Defines role, scope, constraints, and output for one agent | `.github/agents/{{AGENT_NAME}}.agent.md` |
 | **Skill** (`SKILL.md`) | Step-by-step execution procedure | `.github/skills/{{AGENT_NAME}}/SKILL.md` |
 | **Standards** (`STANDARDS.md`) | Output templates, syntax rules, validation checklists | `.github/skills/{{AGENT_NAME}}/STANDARDS.md` |
-| **Core Standards** | Tier 1 universal rules all agents inherit | `.github/standards/core-standards.md` |
+| **Core Standards** | Tier 1 universal rules all agents inherit | `.github/standards/core.md` |
 
 ### Document Authority Hierarchy
 
@@ -51,10 +51,10 @@ Every agent follows this execution protocol. Do not invoke an agent unless the c
 1. **Read the agent definition** — load `.github/agents/{{AGENT_NAME}}.md` to confirm scope and constraints.
 2. **Read SKILL.md** — load `.github/skills/{{AGENT_NAME}}/SKILL.md` for the step-by-step procedure.
 3. **Read STANDARDS.md** — load `.github/skills/{{AGENT_NAME}}/STANDARDS.md` for output templates and validation rules.
-4. **Read core-standards.md** — load `.github/standards/core-standards.md` for universal evidence and file operation rules.
+4. **Read core-standards.md** — load `.github/standards/core.md` for universal evidence and file operation rules.
 5. **Execute all steps in order** — do not skip, reorder, or summarise.
-6. **Validate output** — run the File Creation Validation Checklist from STANDARDS.md before completing.
-7. **Write artifacts to disk** — confirm each file was written at the exact expected path.
+6. **Write artifacts to disk** — confirm each file was written at the exact expected path.
+7. **Validate output** — run the File Creation Validation Checklist from STANDARDS.md; fix any failures before marking the agent run complete.
 
 ---
 
@@ -83,7 +83,7 @@ When an agent finds something outside its scope, it appends this block to its ou
 
 Follow these steps in order. Do not activate an agent until all five steps are complete.
 
-1. **Copy `template-AGENT.md`** → `.github/agents/{{NEW_AGENT_NAME}}.md` and fill every `{{PLACEHOLDER}}`.
+1. **Copy `template-AGENT.md`** → `.github/agents/{{NEW_AGENT_NAME}}.agent.md` and fill every `{{PLACEHOLDER}}`.
 2. **Create `.github/skills/{{NEW_AGENT_NAME}}/SKILL.md`** from `template-SKILL.md` — fill every `{{PLACEHOLDER}}`.
 3. **Create `.github/skills/{{NEW_AGENT_NAME}}/STANDARDS.md`** from `template-STANDARDS.md` — fill every `{{PLACEHOLDER}}`.
 4. **Add the agent to the table** in this INSTRUCTIONS.md under "Agents in This System".
@@ -100,14 +100,14 @@ Follow these steps in order. Do not activate an agent until all five steps are c
 | Design-time placeholder | `{{UPPER_SNAKE_CASE}}` double-brace — fill when instantiating the template | `{{AGENT_NAME}}` |
 | Runtime variable | `{lower_case}` single-brace — filled by the caller at invocation | `{project_name}` |
 
-Both placeholder tiers must be fully resolved before an agent is considered ready. See `core-standards.md §9` for the full convention.
+Both placeholder tiers must be fully resolved before an agent is considered ready. See `core.md §8` for the full convention.
 
 ---
 
 ## Deprecating an Agent
 
 1. Remove the agent row from the table in this INSTRUCTIONS.md.
-2. Move `.github/agents/{{AGENT_NAME}}.md` to `.github/agents/deprecated/`.
+2. Move `.github/agents/{{AGENT_NAME}}.agent.md` to `.github/agents/deprecated/`.
 3. Move `.github/skills/{{AGENT_NAME}}/` to `.github/skills/deprecated/`.
 4. Do not delete historical output files produced by the agent — archive them.
 

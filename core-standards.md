@@ -15,7 +15,7 @@ Every material finding, claim, or assertion must follow these rules:
 | `Inferred` | Best-fit interpretation based on indirect or circumstantial evidence | Label explicitly; include the basis for the inference |
 | `Not found in scanned files` | Evidence is absent from scanned files | Use this phrase verbatim — never guess in its place |
 
-- Every material claim must cite at least one concrete file path, line number, or artifact.
+- Every material claim must cite a concrete file path and line number where available, or an artifact ID for generated or non-code evidence (e.g. a schema dump, a migration file, a log excerpt).
 - Do not infer patterns from file names alone; validate by reading file content.
 - If two interpretations are equally plausible, present both and label the more likely one `Inferred`.
 
@@ -34,7 +34,8 @@ Every material finding, claim, or assertion must follow these rules:
 ## 3. Scope Enforcement
 
 - Each agent operates within a defined domain. Read the **Constraints** section of the agent definition before starting work.
-- If a finding belongs to another agent's domain, flag it in a `Handoff Note` and stop. Do not produce the other agent's deliverable.
+- If a finding belongs to another agent's domain, record it in a `Handoff Note` and continue in-scope work. Do not produce the other agent's deliverable.
+- Stop immediately only if the out-of-scope finding blocks correctness, safety, or a required approval gate for your own deliverable.
 - Read and search files freely. Only write to the output paths designated in your agent definition.
 - When in doubt whether a finding is in scope, it is not — surface it as a handoff.
 
@@ -73,22 +74,25 @@ Every material finding, claim, or assertion must follow these rules:
 
 When your analysis surfaces a finding that falls outside your scope:
 
-1. Write a `## Handoff Note` section at the end of your output.
+1. Record it in a `## Handoff Notes` section. Accumulate all out-of-scope findings here as you work — do not stop mid-analysis to write a handoff.
 2. Name the target agent explicitly (e.g., `cognia-po`, `cognia-ux`).
-3. Summarise the finding in one sentence.
-4. Stop. Do not invoke the other agent, chain it, or produce its deliverable.
+3. Summarise the finding in one sentence with the file path or evidence that triggered it.
+4. Complete your own deliverable, then write the Handoff Notes section at the end.
+5. Do not invoke the other agent, chain it, or produce its deliverable. If no out-of-scope findings were found, write `**Handoff Notes**: None.`
 
 Example:
 
 ```markdown
-## Handoff Note
-**Target agent**: `{{PREFIX}}-po`
-**Finding**: The checkout module contains three user-facing copy strings that contradict the product brief — these require product owner review before the next release.
+## Handoff Notes
+
+| Target Agent | Observation | Evidence | Reason |
+|---|---|---|---|
+| `{{PREFIX}}-po` | Checkout module contains three user-facing copy strings that contradict the product brief. | `src/checkout/labels.ts:14-22` | Requires product owner review before next release. |
 ```
 
 ---
 
-## 9. Placeholder Convention
+## 8. Placeholder Convention
 
 Templates in this system use a two-tier placeholder syntax. Both tiers must be fully resolved before an agent is considered ready to use.
 
@@ -103,7 +107,7 @@ Templates in this system use a two-tier placeholder syntax. Both tiers must be f
 
 ---
 
-## 8. Security & Safety Rules
+## 9. Security & Safety Rules
 
 - Do not write credentials, secrets, API keys, or PII to any output file.
 - If a scanned file contains credentials or PII, note their presence but do not reproduce the values.

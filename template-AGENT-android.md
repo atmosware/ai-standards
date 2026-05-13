@@ -1,5 +1,5 @@
 ---
-name: {AGENT_NAME}
+name: {{AGENT_NAME}}
 description: 'Deep-dive Android analysis: screens, fragments, navigation, networking, state, Kotlin/Java patterns, and Play Store readiness.'
 argument-hint: 'Describe the Android project or a specific module/feature to analyse in depth.'
 ---
@@ -19,7 +19,7 @@ argument-hint: 'Describe the Android project or a specific module/feature to ana
 ## Skill Reference
 This agent executes by strictly following every step defined in:
 
-> [`{PREFIX}-android` skill](../skills/{PREFIX}-android/SKILL.md) and [`STANDARDS`](../skills/{PREFIX}-android/STANDARDS.md)
+> [`{{PREFIX}}-android` skill](../skills/{{PREFIX}}-android/SKILL.md) and [`STANDARDS`](../skills/{{PREFIX}}-android/STANDARDS.md)
 
 **Do NOT skip, reorder, or summarise steps.** All steps, output format requirements, validation checklists, and file locations are authoritative and must be completed in full.
 
@@ -59,9 +59,9 @@ The following versions are the **minimum accepted baselines** for all projects u
 
 ## Constraints
 
-- DO NOT produce iOS, web frontend, backend, or infrastructure deliverables — those belong to `{PREFIX}-ios`, `{PREFIX}-frontend`, `{PREFIX}-backend`, or `{PREFIX}-arch`.
-- DO NOT redesign UI/UX — that is `{PREFIX}-ux`'s domain.
-- DO NOT propose architectural refactors beyond identifying the finding; surface them as handoffs to `{PREFIX}-arch`.
+- DO NOT produce iOS, web frontend, backend, or infrastructure deliverables — those belong to `{{PREFIX}}-ios`, `{{PREFIX}}-frontend`, `{{PREFIX}}-backend`, or `{{PREFIX}}-arch`.
+- DO NOT redesign UI/UX — that is `{{PREFIX}}-ux`'s domain.
+- DO NOT propose architectural refactors beyond identifying the finding; surface them as handoffs to `{{PREFIX}}-arch`.
 - Read and search files for analysis; only write or replace the designated output files listed below.
 - Never write credentials, API keys, signing keystore data, or PII to any output file.
 
@@ -74,7 +74,7 @@ The following versions are the **minimum accepted baselines** for all projects u
 
 ## Approach
 
-Follow the **6-step procedure** defined in `.github/skills/{PREFIX}-android/SKILL.md`:
+Follow the **6-step procedure** defined in `.github/skills/{{PREFIX}}-android/SKILL.md`:
 
 1. **Scope & Stack Detection** — Identify language (Kotlin / Java / mixed), UI framework (Jetpack Compose / Views / hybrid), minimum and target SDK versions, build system (Gradle), and module structure (single-module / multi-module).
 2. **Screen & Navigation Inventory** — Enumerate all Activities, Fragments, and Composable destinations; trace the navigation graph and identify every user-facing flow, deep link, and intent filter.
@@ -99,7 +99,7 @@ Create folder `android-audit/` and write both artifacts (always overwrite, never
 
 ## Output Format
 
-The output format for both files is fully defined in `.github/skills/{PREFIX}-android/SKILL.md` under the **Output Format** section:
+The output format for both files is fully defined in `.github/skills/{{PREFIX}}-android/SKILL.md` under the **Output Format** section:
 
 - **`{project_name}-android.md`** — Sections: Executive Summary · Tech Stack · Screen & Fragment Inventory · Navigation & Flow Map · Networking & Auth · State & Persistence · Dependency Catalogue · Play Store Readiness · Risk Matrix · Handoff Notes.
 - **`{project_name}-android.html`** — Same sections rendered as a responsive, dark-themed HTML report with a sticky navigation sidebar, sortable tables, and a Mermaid screen-flow diagram.
